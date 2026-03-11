@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>极速云音乐平台 - 官方主页</title>
+    <link rel="icon" type="image/x-icon" href="https://cdn2.hkts.dpdns.org/Logo.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            color: #f1f5f9;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 顶部导航栏 */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            height: 50px;
+            width: auto;
+            border-radius: 8px;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-link {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 0;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: #60a5fa;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #60a5fa;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* 主要内容区域 */
+        .hero {
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        /* 特色部分 */
+        .features {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #f8fafc;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .feature-card {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(96, 165, 250, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #60a5fa;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #f8fafc;
+        }
+        
+        /* 平台访问部分 */
+        .platform-access {
+            padding: 40px 0 80px;
+        }
+        
+        .platform-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .platform-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+            border-radius: 16px;
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .platform-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(96, 165, 250, 0.3);
+        }
+        
+        .platform-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #8b5cf6;
+        }
+        
+        .platform-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .access-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .access-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+        
+        /* 版权信息部分 */
+        .copyright-info {
+            background: rgba(15, 23, 42, 0.9);
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .copyright-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .copyright-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #f8fafc;
+        }
+        
+        .copyright-content p {
+            margin-bottom: 15px;
+            color: #cbd5e1;
+        }
+        
+        .copyright-notice {
+            background: rgba(220, 38, 38, 0.1);
+            border-left: 4px solid #ef4444;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+        
+        .contact-email {
+            color: #60a5fa;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .contact-email:hover {
+            text-decoration: underline;
+        }
+        
+        /* 底部 */
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .platform-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo-container">
+                <img src="https://cdn2.hkts.dpdns.org/Logo.jpg" alt="极速云音乐平台Logo" class="logo">
+                <div class="logo-text">极速云音乐</div>
+            </div>
+            <nav class="nav-links">
+                <a href="#home" class="nav-link">首页</a>
+                <a href="#features" class="nav-link">平台特色</a>
+                <a href="#platforms" class="nav-link">平台访问</a>
+                <a href="#copyright" class="nav-link">版权声明</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- 主要内容区域 -->
+    <main>
+        <!-- 欢迎区域 -->
+        <section class="hero" id="home">
+            <div class="container">
+                <h1>极速云音乐平台</h1>
+                <p>探索海量正版音乐，享受无与伦比的听觉盛宴。我们致力于为您提供高品质、合法授权的音乐内容，打造极致的音乐体验平台。</p>
+                <a href="#platforms" class="access-btn">立即体验</a>
+            </div>
+        </section>
+        
+        <!-- 平台特色 -->
+        <section class="features" id="features">
+            <div class="container">
+                <h2 class="section-title">平台特色</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3>正版授权音乐</h3>
+                        <p>所有音乐均已获得合法版权授权，为您提供安全、可靠的音乐资源。我们与多家音乐公司合作，确保平台内容的正规性。</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>极速播放体验</h3>
+                        <p>采用先进的流媒体技术，实现秒级加载与缓冲，无论在线播放还是下载，都能享受流畅无卡顿的音乐体验。</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>版权保护承诺</h3>
+                        <p>我们严格保护音乐人版权，所有内容归极速云平台所有。如发生侵权问题，我们将第一时间处理，维护健康音乐生态。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 平台访问 -->
+        <section class="platform-access" id="platforms">
+            <div class="container">
+                <h2 class="section-title">平台访问</h2>
+                <div class="platform-cards">
+                    <div class="platform-card">
+                        <div class="platform-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3>电脑版</h3>
+                        <p>专为桌面设备优化，提供完整的音乐管理、播放列表和高质量音频播放功能。</p>
+                        <a href="PC.html" class="access-btn">访问电脑版</a>
+                    </div>
+                    
+                    <div class="platform-card">
+                        <div class="platform-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>手机版</h3>
+                        <p>移动端专属设计，随时随地享受音乐。适配各种屏幕尺寸，操作简单便捷。</p>
+                        <a href="Phone.html" class="access-btn">访问手机版</a>
+                    </div>
+                    
+                    <div class="platform-card">
+                        <div class="platform-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>其他页面</h3>
+                        <p>平台其他相关功能与页面，包括音乐分类、排行榜、个人中心等。</p>
+                        <a href="other.html" class="access-btn">访问其他页面</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 版权声明 -->
+        <section class="copyright-info" id="copyright">
+            <div class="container">
+                <div class="copyright-content">
+                    <h3>版权声明与使用须知</h3>
+                    <p>极速云音乐平台高度重视知识产权保护，我们确保平台内所有音乐均已获得合法版权授权。</p>
+                    
+                    <div class="copyright-notice">
+                        <p><strong>重要提示：</strong> 所有音乐版权归极速云平台所有。未经授权禁止任何商业化使用。</p>
+                    </div>
+                    
+                    <p>1. 本平台内所有音乐内容均已获得相应版权授权，版权归极速云平台所有。</p>
+                    <p>2. 如您发现任何可能的侵权内容，请立即通过以下方式联系我们，我们将在第一时间核实并处理：</p>
+                    <p style="margin-top: 10px;">
+                        <strong>联系邮箱：</strong>
+                        <a href="mailto:admin@hkts.dpdns.org" class="contact-email">admin@hkts.dpdns.org</a>
+                    </p>
+                    <p>3. 如您需要获取平台音乐资源，请确保已获得合法授权或明确标注出处。</p>
+                    <p>4. 严禁未经授权对平台音乐进行任何形式的商业化使用，包括但不限于商业演出、广告、影视作品等。</p>
+                    <p>5. 我们尊重并保护每一位音乐创作者的劳动成果，致力于构建健康、合法的音乐生态。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- 底部 -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 极速云音乐平台 版权所有</p>
+            <p>本平台所有音乐均已获得版权授权 | 侵权联系邮箱: admin@hkts.dpdns.org</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">PC端: PC.html | 手机端: Phone.html | 其他页面: other.html</p>
+        </div>
+    </footer>
+    
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if(window.scrollY > 50) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
